@@ -14,7 +14,36 @@
 
 let allIsuData = [];
 
-// 1. Initial Data Load
+
+// Login 
+const loginForm = document.getElementById('login-form');
+const loginSection = document.getElementById('login-section');
+const mainDashboard = document.getElementById('main-dashboard'); // Ensure dashboard container has this ID
+
+if (loginForm) {
+    loginForm.onsubmit = (e) => {
+        e.preventDefault();
+        
+        const user = document.getElementById('username').value;
+        const pass = document.getElementById('password').value;
+
+        
+        if (user === 'admin' && pass === 'admin123') {
+            
+            loginSection.classList.add('hidden');
+            mainDashboard.classList.remove('hidden');
+            
+            
+            if (typeof loadCard === "function") {
+                loadCard(); 
+            }
+        } else {
+            alert('Access Denied: Invalid Username or Password.');
+        }
+    };
+}
+
+
 const loadCard = () => {
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
         .then((res) => res.json())
@@ -27,7 +56,7 @@ const loadCard = () => {
         .catch(err => console.error("Data fetch error:", err));
 };
 
-// 2. Card Rendering Logic
+// Card Rendring
 const dispIsuCards = (dataArr) => {
     const grdBox = document.getElementById('isue-grid-box');
     const totNumTxt = document.getElementById('total-issu-count');
@@ -77,7 +106,7 @@ const dispIsuCards = (dataArr) => {
     });
 };
 
-// 3. Modal Details Logic
+// Modal Logic er kaj
 const showPopData = (isuId) => {
     const popContainer = document.getElementById('pop-up-main');
     const dtaBox = document.getElementById('open-modal-dat');
@@ -85,7 +114,7 @@ const showPopData = (isuId) => {
     if(!popContainer || !dtaBox) return;
 
     popContainer.classList.remove('hidden');
-    // Clean loading state with dots
+    
     dtaBox.innerHTML = `
         <div class="flex items-center justify-center py-20">
             <p class="text-indigo-600 font-medium text-lg animate-pulse">Loading...</p>
@@ -95,7 +124,6 @@ const showPopData = (isuId) => {
     fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${isuId}`)
         .then(res => res.json())
         .then(json => {
-            // Using item variable to match expected API response
             const item = json.data;
             if(!item) throw new Error("No data");
 
@@ -146,7 +174,7 @@ const showPopData = (isuId) => {
         });
 };
 
-// 4. Tab Filter and Search (Kept your logic)
+// Tab Filter r Search kora
 document.querySelectorAll('.tab-btun').forEach(btn => {
     btn.onclick = (e) => {
         document.querySelectorAll('.tab-btun').forEach(b => {
