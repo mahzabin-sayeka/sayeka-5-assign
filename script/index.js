@@ -26,10 +26,10 @@ if (loginForm) {
         const pass = document.getElementById('password').value;
 
         if (user === 'admin' && pass === 'admin123') {
-            
             document.getElementById('login-section').classList.add('hidden');
             document.getElementById('main-dashboard').classList.remove('hidden');
             
+            // Login successful holei sob data load hobe
             loadCard(); 
         } else {
             alert('Wrong Username or Password!');
@@ -37,6 +37,7 @@ if (loginForm) {
     };
 }
 
+// .......
 
 const loadCard = () => {
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
@@ -101,6 +102,7 @@ const dispIsuCards = (dataArr) => {
 };
 
 // Modal Logic er kaj
+
 const showPopData = (isuId) => {
     const popContainer = document.getElementById('pop-up-main');
     const dtaBox = document.getElementById('open-modal-dat');
@@ -109,18 +111,24 @@ const showPopData = (isuId) => {
 
     popContainer.classList.remove('hidden');
     
+    
     dtaBox.innerHTML = `
         <div class="flex items-center justify-center py-20">
             <p class="text-indigo-600 font-medium text-lg animate-pulse">Loading...</p>
         </div>
     `;
 
+    
     fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${isuId}`)
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) throw new Error("Network response was not ok");
+            return res.json();
+        })
         .then(json => {
             const item = json.data;
-            if(!item) throw new Error("No data");
+            if(!item) throw new Error("No data found");
 
+            
             dtaBox.innerHTML = `
                 <div class="modal-content animate-in fade-in duration-300">
                     <h2 class="text-2xl font-bold text-slate-800 mb-2">${item.title}</h2>
@@ -139,11 +147,9 @@ const showPopData = (isuId) => {
                         </span>
                     </div>
 
-                    <p class="text-slate-500 text-sm leading-relaxed mb-8">
-                        ${item.description}
-                    </p>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-8">${item.description}</p>
 
-                    <div class="bg-slate-50 rounded-xl p-6 grid grid-cols-2 gap-4 mb-2">
+                    <div class="bg-slate-50 rounded-xl p-6 grid grid-cols-2 gap-4">
                         <div>
                             <p class="text-slate-400 text-xs mb-1 uppercase font-bold tracking-tighter">Assignee</p>
                             <p class="font-bold text-slate-800">${item.author}</p>
@@ -160,13 +166,19 @@ const showPopData = (isuId) => {
         })
         .catch(err => {
             console.error("Fetch error:", err);
+            
             dtaBox.innerHTML = `
                 <div class="text-center py-10">
-                    <p class="text-slate-400">Unable to load details. Please check connection.</p>
+                    <div class="flex justify-center mb-4">
+                        <i class="fa-solid fa-triangle-exclamation text-red-500 text-5xl"></i>
+                    </div>
+                    <h3 class="text-red-600 font-bold text-xl mb-1">Failed to load issue details.</h3>
+                    <p class="text-slate-400 text-sm">Please try again later.</p>
                 </div>
             `;
         });
 };
+
 
 // Tab Filter r Search kora
 document.querySelectorAll('.tab-btun').forEach(btn => {
@@ -200,5 +212,3 @@ if(offBtn) {
         document.getElementById('pop-up-main').classList.add('hidden');
     };
 }
-
-loadCard();
