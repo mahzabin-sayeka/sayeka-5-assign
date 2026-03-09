@@ -39,6 +39,42 @@
     </style>
 </head>
 <body class=" bg-gray-100">
+
+    <!-- login -->
+
+    <section>
+        <div id="login-section" class="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+    <div class="bg-white p-10 rounded-2xl shadow-xl w-full max-w-md border border-gray-100">
+        <div class="text-center mb-10">
+            <div class="flex justify-center mb-4">
+                <i class="fa-brands fa-github text-6xl text-slate-800"></i>
+            </div>
+            <h1 class="text-2xl font-bold text-slate-800 tracking-tight">GitHub Issues Tracker</h1>
+            <p class="text-slate-400 text-sm mt-1">Sign in to manage your issues</p>
+        </div>
+
+        <form id="login-form" class="space-y-5">
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Username</label>
+                <input type="text" id="username" placeholder="Enter Username" required
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-slate-700">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Password</label>
+                <input type="password" id="password" placeholder="Enter Password" required
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-slate-700">
+            </div>
+            <button type="submit" 
+                class="w-full bg-[#4F16F0] text-white font-bold py-4 rounded-xl hover:bg-indigo-700 transition-all shadow-lg active:scale-[0.98]">
+                Sign In
+            </button>
+        </form>
+    </div>
+</div>
+    </section>
+
+
+
  <!-- nav section -->
      <!-- <nav class="uporer-bar bg-white border-b px-20 py-4 mb-8">
          <div class="flex flex-col md:flex-row justify-between items-center max-w-full mx-auto gap-4">
