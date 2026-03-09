@@ -17,8 +17,6 @@ let allIsuData = [];
 
 // Login 
 const loginForm = document.getElementById('login-form');
-const loginSection = document.getElementById('login-section');
-const mainDashboard = document.getElementById('main-dashboard'); // Ensure dashboard container has this ID
 
 if (loginForm) {
     loginForm.onsubmit = (e) => {
@@ -27,18 +25,14 @@ if (loginForm) {
         const user = document.getElementById('username').value;
         const pass = document.getElementById('password').value;
 
-        
         if (user === 'admin' && pass === 'admin123') {
             
-            loginSection.classList.add('hidden');
-            mainDashboard.classList.remove('hidden');
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('main-dashboard').classList.remove('hidden');
             
-            
-            if (typeof loadCard === "function") {
-                loadCard(); 
-            }
+            loadCard(); 
         } else {
-            alert('Access Denied: Invalid Username or Password.');
+            alert('Wrong Username or Password!');
         }
     };
 }
