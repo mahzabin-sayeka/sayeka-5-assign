@@ -27,6 +27,15 @@
         *{
             font-family: "Geist", sans-serif;
         }
+        .hidden { 
+            display: none !important; 
+        }
+        .line-cut {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class=" bg-gray-100">
@@ -86,10 +95,44 @@
 
  <!-- carrt header -->
                 
+                   <div class="all-card-header bg-white border p-6 flex flex-col sm:flex-row justify-between items-center gap-4 border-gray-100 rounded-xl mb-8">
+                <div class="flex items-center gap-4">
+                    <div class="box-round w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center text-[#4F16F0]">
+                        <i class="fa-solid fa-circle-notch text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 id="total-issu-count" class="text-xl font-bold text-gray-800">0 Issues</h2>
+                        <p class="text-gray-400 text-sm">Track and manage your project issues</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 text-sm font-semibold text-gray-500 uppercase tracking-tighter">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 bg-emerald-500 rounded-full"></span>
+                        <span>Open</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                         <span class="w-3 h-3 bg-purple-500 rounded-full"></span>
+                        <span>Closed</span>
+                    </div>
+                </div>
+            </div>
+
+             <div id="isue-grid-box" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                </div>
 
            </section>
 
     </main>
+
+    <div id="pop-up-main" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+        <div class="box-er-bhetor bg-white w-full max-w-2xl rounded-3xl p-10 shadow-2xl relative">
+            <div id="open-modal-dat" class="space-y-6"></div>
+            <div class="down-btn flex justify-end">
+                <button id="off-buton" class="bg-[#4F16F0] text-white px-10 py-3.5 rounded-2xl font-bold hover:bg-indigo-700 transition">Close</button>
+            </div>
+        </div>
+    </div>
 
 
     <script src="script/index.js"></script>
