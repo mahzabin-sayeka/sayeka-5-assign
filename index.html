@@ -19,6 +19,10 @@
     <!-- icon -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
      
+     <!-- css linking -->
+      <link rel="stylesheet" href="style.css">
+
+
     <style>
         *{
             font-family: "Geist", sans-serif;
@@ -26,9 +30,9 @@
     </style>
 </head>
 <body class=" bg-gray-100">
-     <!-- nav section -->
-   <nav class="top-bar bg-white border-b px-4 py-4 mb-8">
-         <div class="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto gap-4">
+ <!-- nav section -->
+     <nav class="top-bar bg-white border-b px-20 py-4 mb-8">
+         <div class="flex flex-col md:flex-row justify-between items-center max-w-full mx-auto gap-4">
         
             <h3 class="header text-xl font-bold">
              <i class="fa-brands fa-github mr-2"></i> GitHub Issues Tracker
@@ -46,18 +50,27 @@
         </div>
         
     </div>
-</nav>
+     </nav>
 
     <main class="w-[80%] mx-auto">
         
-           <div class="flex gap-4 bg-white px-4 py-4">
+           <!-- <div class="flex gap-4 bg-white px-4 py-4">
                <button onclick="toggleStyle('all-filter-btn')" class="bg-blue-500 text-white font-semibold text-xs rounded-sm px-5 py-2 border-gray-200" id="all-filter-btn">All</button>
                <button onclick="toggleStyle('open-filter-btn')" class="bg-white text-gray-800 font-semibold text-xs rounded-sm px-5 py-2 border-gray-200" id="open-filter-btn">Open</button>
                <button onclick="toggleStyle('closed-filter-btn')" class="bg-white  text-gray-800 font-semibold text-xs rounded-sm px-5 py-2" id="closed-filter-btn">Closed</button>
+           </div> -->
+           
+ <!-- all open closed -->
+           <div class="flex gap-4 bg-white px-4 py-4">
+               <button  class="bg-blue-500 text-white font-semibold text-xs rounded-sm px-5 py-2 border-2 border-gray-200" id="all-filter-btn">All</button>
+               <button class="bg-white text-gray-800 font-semibold text-xs rounded-sm px-5 py-2 border-2 border-gray-200" id="open-filter-btn">Open</button>
+               <button class="bg-white  text-gray-800 font-semibold text-xs rounded-sm px-5 py-2 border-2 border-gray-200" id="closed-filter-btn">Closed</button>
            </div>
 
 
            <section class="mt-4">
+
+ <!-- carrt header -->
                  <div class="bg-white border p-6 flex flex-col sm:flex-row justify-between items-center gap-4  border-gray-100 rounded-xl">
                    <div class="flex items-center gap-4">
                        <div class="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center text-[#4F16F0]">
@@ -80,10 +93,41 @@
                         </div>
                     </div>
                 </div>
+
+<!-- cart desgin  -->
+                 <!-- <div class="all-cart flex md:w-1/2 gap-4 items-center ">
+                    
+                      <div class="bg-white border-t-2 border-green-500 shadow-sm p-4 rounded">
+    
+                    <div class="flex justify-between items-start mb-3">
+                         <div class="w-7 h-7 bg-green-100 text-green-600 rounded-full grid place-items-center text-xs">
+                          <i class="fa-solid fa-check"></i>
+                        </div>
+                       <span class="bg-red-50 text-red-500 text-[10px] font-bold px-2 py-0.5 rounded uppercase">High</span>
+                    </div>
+
+                   <h3 class="font-bold text-gray-800 text-sm mb-1">Fix Navigation Menu</h3>
+                   <p class="text-gray-500 text-xs line-clamp-2 mb-3">The menu doesn't collapse properly on mobile...</p>
+
+                    <div class="flex gap-2 mb-3">
+                        <span class="text-[10px] font-bold border px-1.5 py-0.5 rounded text-red-500 bg-red-50 border-red-100">BUG</span>
+                        <span class="text-[10px] font-bold border px-1.5 py-0.5 rounded text-orange-500 bg-orange-50 border-orange-100">HELP</span>
+                    </div>
+
+                    <hr class="mb-3 opacity-50">
+
+                   <div class="text-[10px] text-gray-400">
+                      <p>#1 by john_doe</p>
+                      <p>1/15/2024</p>
+                   </div>
+                 </div>  -->
+
            </section>
 
     </main>
 
+
+    <script src="script/index.js"></script>
 </body>
 
 
